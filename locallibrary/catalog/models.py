@@ -6,6 +6,13 @@ from django.urls import reverse # Used in get_absolute_url() to get URL for spec
 from django.db.models import UniqueConstraint # Constrains fields to unique values
 from django.db.models.functions import Lower # Returns lower cased value of field
 
+class Language(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    def get_absolute_url(self):
+        return reverse('language-detail', args=[str(self.id)])
+    def __str__ (self):
+        return self.name
+    
 class Genre(models.Model):
     """Model representing a book genre."""
     name = models.CharField(
@@ -49,6 +56,7 @@ class Book(models.Model):
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(
         Genre, help_text="Select a genre for this book")
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null = True)
 
     def __str__(self):
         """String for representing the Model object."""
