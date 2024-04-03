@@ -23,6 +23,7 @@
       <div class="row">
         <div class="col-sm-2">
           {% block sidebar %}
+          <img src="{% static 'css/images/book.jpg' %}">
             <ul class="sidebar-nav">
               <li><a href="{% url 'index' %}">Home</a></li>
               <li><a href="{% url 'books' %}">All books</a></li>
@@ -77,4 +78,7 @@
       </div>
     </div>
   </body>
+  <footer>
+    <p> Link to the tutorial: <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website">Here</a><p>
+  </footer>
 </html>
